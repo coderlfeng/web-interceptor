@@ -1,0 +1,35 @@
+{
+  "name": "web-api-interceptor",
+  "version": "1.0.0",
+  "description": "A Lit-based Chrome extension starter with a side panel.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite build --watch",
+    "build": "vite build",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "chrome-extension",
+    "lit",
+    "side-panel",
+    "manifest-v3"
+  ],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.21.0",
+  "dependencies": {
+    "@vitejs/plugin-basic-ssl": "latest",
+    "gsap": "^3.15.0",
+    "lit": "latest"
+  },
+  "devDependencies": {
+    "@crxjs/vite-plugin": "latest",
+    "@tailwindcss/vite": "^4.3.0",
+    "@types/chrome": "latest",
+    "autoprefixer": "^10.5.0",
+    "daisyui": "^5.5.20",
+    "tailwindcss": "^4.3.0",
+    "typescript": "latest",
+    "vite": "latest"
+  }
+}
