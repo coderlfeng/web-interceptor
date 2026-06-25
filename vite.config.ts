@@ -8,6 +8,13 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     emptyOutDir: true,
-    sourcemap: true,
+    sourcemap: false,
+    rollupOptions: {
+      input: {
+        main: 'index.html',
+        'group-add': 'group-add.html',
+        'add-rule': 'add-rule.html',
+      },
+    },
   },
 });

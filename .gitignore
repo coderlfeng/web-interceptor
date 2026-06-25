@@ -2,3 +2,4 @@
 *dist/
 *.agents
 *.claude
+*.DS_STORE

@@ -15,6 +15,19 @@ const manifest: ManifestV3Export = {
   side_panel: {
     default_path: 'index.html',
   },
+  content_scripts: [
+    {
+      matches: ['<all_urls>'],
+      js: ['src/content/interceptor-main.ts'],
+      run_at: 'document_start',
+      world: 'MAIN',
+    },
+    {
+      matches: ['<all_urls>'],
+      js: ['src/content/interceptor.ts'],
+      run_at: 'document_start',
+    },
+  ],
   permissions: ['sidePanel', 'declarativeNetRequest', 'declarativeNetRequestFeedback', 'storage'],
   host_permissions: ['<all_urls>'],
 };

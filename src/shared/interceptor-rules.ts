@@ -51,10 +51,13 @@ export function validateInterceptorRule(rule: InterceptorRuleDraft): string | un
     return '请选择有效的 HTTP method';
   }
 
-  try {
-    JSON.parse(rule.mockBody);
-  } catch {
-    return 'Mock 数据必须是合法 JSON';
+  const hasFakerExpr = /\{\{[\s\S]+?\}\}/.test(rule.mockBody);
+  if (!hasFakerExpr) {
+    try {
+      JSON.parse(rule.mockBody);
+    } catch {
+      return 'Mock 数据必须是合法 JSON，或包含动态表达式（如 {{faker.internet.email()}} 或 {{taskId}}）';
+    }
   }
 
   return undefined;
@@ -109,7 +112,7 @@ export async function createInterceptorRuleGroup(
     rules: [],
   };
 
-  await saveInterceptorRuleGroups([...groups, group]);
+  await saveInterceptorRuleGroups([group, ...groups]);
 
   return group;
 }
@@ -191,7 +194,7 @@ export async function addRuleToGroup(
 
     return {
       ...group,
-      rules: [...group.rules, rule],
+      rules: [rule, ...group.rules],
     };
   });
 

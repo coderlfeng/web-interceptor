@@ -12,7 +12,8 @@ export function registerRoute(path: string, tag: string, title: string) {
 }
 
 export function resolveRoute(hash = window.location.hash): RouteEntry {
-  const path = normalizePath(hash.replace(/^#/, ''));
+  const full = normalizePath(hash.replace(/^#/, ''));
+  const path = full.split('?')[0];
   return routes.get(path) ?? routes.get(defaultPath) ?? { path: defaultPath, tag: 'home-page', title: 'Home' };
 }
 
